@@ -2,20 +2,21 @@ package com.kanban.demo.candidate;
 
 import com.kanban.demo.states.States;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name="employee")
+@Table(name="candidate")
 public class Candidate {
     @Id
-    @Column(name="empid")
+    @Column(name="canid")
     private int id;
+
     private String name;
     private String education;
     private String contact;
+
+    @Column(name="state")
+    @Enumerated(EnumType.STRING)
     private States states;
 
     public Candidate(){}

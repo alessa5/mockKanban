@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/controller")
+@RequestMapping("/candidate")
 public class CandidateController {
     @Autowired
     CandidateService sev;
@@ -22,10 +22,10 @@ public class CandidateController {
         return new ResponseEntity<>(sev.getCandidateById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/{name}")
+    /*@GetMapping("/{name}")
     public ResponseEntity<Candidate> getCandidateByName(@PathVariable String name){
         return new ResponseEntity<>(sev.getCandidateByName(name), HttpStatus.OK);
-    }
+    }*/
 
     @PostMapping("/update")
     public ResponseEntity<List<Candidate>>  updateCandidateInfo(@RequestBody Candidate candidate){

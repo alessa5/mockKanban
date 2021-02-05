@@ -50,7 +50,7 @@ public class CandidateService {
         List<Candidate> old = getCandidateList();
         int maxId = old.stream().mapToInt(c->c.getId()).max().orElse(0);
         candidate.setId(maxId+10);
-        getCandidateList().add(candidate);
+        repo.save(candidate);
     }
 
     //delete candidate by id method
@@ -59,7 +59,7 @@ public class CandidateService {
         while(ite.hasNext()){
             Candidate current = ite.next();
             if(current.getId() == id){
-                ite.remove();
+                repo.delete((current));
             }
         }
     }
