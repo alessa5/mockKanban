@@ -2,12 +2,23 @@ package com.kanban.demo.candidate;
 
 import com.kanban.demo.states.States;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="employee")
 public class Candidate {
+    @Id
+    @Column(name="empid")
     private int id;
     private String name;
     private String education;
     private String contact;
     private States states;
+
+    public Candidate(){}
 
     public Candidate(int id,String name,String Education,String contact,States states){
         this.id = id;
