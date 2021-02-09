@@ -17,15 +17,16 @@ public class CandidateController {
     @Autowired
     CandidateService sev;
 
-    @GetMapping("/{id}")
+    @GetMapping("/find/{id}")
     public ResponseEntity<Candidate> getCandidateById(@PathVariable int id){
         return new ResponseEntity<>(sev.getCandidateById(id), HttpStatus.OK);
     }
 
-    /*@GetMapping("/{name}")
-    public ResponseEntity<Candidate> getCandidateByName(@PathVariable String name){
-        return new ResponseEntity<>(sev.getCandidateByName(name), HttpStatus.OK);
-    }*/
+    @GetMapping("/find/all")
+    public ResponseEntity<List<Candidate>> getCandidateAll (){
+        return new ResponseEntity<>(sev.getCandidateList(), HttpStatus.OK);
+        //model.addAttribute("message", "This is welcome page Ver 2021/02/08!");
+    }
 
     @PostMapping("/update")
     public ResponseEntity<List<Candidate>>  updateCandidateInfo(@RequestBody Candidate candidate){
@@ -39,13 +40,13 @@ public class CandidateController {
         return new ResponseEntity<>(sev.getCandidateList(),HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<List<Candidate>>  deleteCandidateById(@PathVariable int id){
         sev.deleteCandidateById(id);
         return new ResponseEntity<>(sev.getCandidateList(),HttpStatus.OK);
     }
 
-    @DeleteMapping("/all")
+    @DeleteMapping("/delete/all")
     public @ResponseBody  List<Candidate>  deleteAll(){
         return new ArrayList<>();
     }
