@@ -8,12 +8,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @RestController
+@CrossOrigin(allowCredentials="true",maxAge = 3600,origins = "http://localhost:3000")
 @RequestMapping("/candidateREST")
 public class CandidateRestController {
     @Autowired
     CandidateService sev;
 
+    //@CrossOrigin
     @GetMapping("/find/all")
     public List<Candidate> getCandidateAll (){
         return sev.getCandidateList();
