@@ -10,13 +10,14 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin(allowCredentials="true",maxAge = 3600,origins = "http://localhost:3000")
+
 @RequestMapping("/candidateREST")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CandidateRestController {
     @Autowired
     CandidateService sev;
 
-    //@CrossOrigin
+
     @GetMapping("/find/all")
     public List<Candidate> getCandidateAll (){
         return sev.getCandidateList();
@@ -27,16 +28,18 @@ public class CandidateRestController {
         return sev.getCandidateById(id);
     }
 
-    @PostMapping("/update")
+
+    @PutMapping("/update")
     public List<Candidate> updateCandidateInfo (@RequestBody Candidate candidate){
         sev.updateCandidateInfo(candidate);
+        System.out.println("post request received");
         return sev.getCandidateList();
     }
 
-    @PutMapping("/create")
-    public List<Candidate> addCandidate (@RequestBody Candidate candidate){
-        sev.createNewCandidate(candidate);
-        return sev.getCandidateList();
+    //@CrossOrigin(origins = "http://localhost:3000/putCandidate")
+    @PostMapping("/create")
+    public Candidate addCandidate (@RequestBody Candidate candidate){
+        return sev.createNewCandidate(candidate);
     }
 
     @DeleteMapping("/delete/{id}")

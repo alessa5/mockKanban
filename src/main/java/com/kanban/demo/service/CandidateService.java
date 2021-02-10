@@ -46,11 +46,11 @@ public class CandidateService {
     }
 
     //put info changing method
-    public void createNewCandidate(Candidate candidate){
+    public Candidate createNewCandidate(Candidate candidate){
         List<Candidate> old = getCandidateList();
         int maxId = old.stream().mapToInt(c->c.getId()).max().orElse(0);
         candidate.setId(maxId+10);
-        repo.save(candidate);
+        return repo.save(candidate);
     }
 
     //delete candidate by id method
