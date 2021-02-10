@@ -31,18 +31,23 @@ public class CandidateService {
     }
 
     //post info changing method
-    public void updateCandidateInfo(Candidate candidate) {
-        Iterator<Candidate> ite = getCandidateList().iterator();
+    public Candidate updateCandidateInfo(Candidate candidate) {
+        List<Candidate> canList = getCandidateList();
+        Iterator<Candidate> ite = canList.iterator();
+        Candidate current = canList.get(0);
         int targetId = candidate.getId();
+
         while(ite.hasNext()){
-            Candidate current = ite.next();
+            current = ite.next();
             if(current.getId() == targetId){
                 current.setName(candidate.getName());
                 current.setContact(candidate.getContact());
                 current.setEducation(candidate.getEducation());
                 current.setStates(candidate.getStates());
             }
+            break;
         }
+        return current;
     }
 
     //put info changing method

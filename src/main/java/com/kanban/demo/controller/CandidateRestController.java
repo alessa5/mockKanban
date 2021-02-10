@@ -30,10 +30,8 @@ public class CandidateRestController {
 
 
     @PutMapping("/update")
-    public List<Candidate> updateCandidateInfo (@RequestBody Candidate candidate){
-        sev.updateCandidateInfo(candidate);
-        System.out.println("post request received");
-        return sev.getCandidateList();
+    public Candidate updateCandidateInfo (@RequestBody Candidate candidate){
+        return sev.updateCandidateInfo(candidate);
     }
 
     //@CrossOrigin(origins = "http://localhost:3000/putCandidate")
