@@ -41,9 +41,9 @@ public class CandidateRestController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public List<Candidate> addCandidate (@PathVariable int id){
+    public void deleteCandidateById (@PathVariable int id){
         sev.deleteCandidateById(id);
-        return sev.getCandidateList();
+        //return sev.getCandidateList();
     }
 
     @DeleteMapping("/delete/all")
